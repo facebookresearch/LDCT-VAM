@@ -121,6 +121,9 @@ class Volume:
                 self.nR, self.nTheta, self.nZ = self.array.shape
                 self.resolution = self.nZ
 
+        self.compressed = False #Default volume is not compressed
+        self.compressed_z_index = None #List of lists. This maps the slices in compressed format to uncompressed format
+
     def segmentZ(self,slices):
         """
         Segment volume object by chosen z slices. Modifies the array attribute of the volume object.
@@ -151,6 +154,32 @@ class Volume:
             self.array = self.array[:,:,slices[0]:slices[1]]
             self.nZ = slices[1] - slices[0] + 1
             self.resolution = self.nZ
+
+    def compressZ(self):
+        """
+        Identify identical z slices and remove duplicates for performance improvement. Modifies the array attribute of the volume object.
+        This function assumes the computation of the slices are decoupled.
+        Currently only support compression for real space volume. Compression for projection space volume (sinogram) for axisymmetric targets could be added later.
+
+        """
+        if self.n_dim == 2:
+            print('2D volume cannot be further compressed in z slice. Returning to caller.')
+            return
+
+        
+        #Identify distinct layers, counts them and create mapping between the compressed and uncompressed array
+        #Check for layer identity
+
+        for slice in range(self.array.shape[3]):
+        self.array
+
+        #Modify array
+        #Update other attributes
+
+    def uncompressZ(self):
+        pass
+
+
 
     def save(self,name : str):
         """Save geometry object"""
