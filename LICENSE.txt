@@ -1,4 +1,5 @@
-Copyright (C) 2022 Joseph Toombs and contributors
+LDCT-VAM is a fork of VAMToolbox that adds a general optimization formulation and a ray-traced light propagation model.
+Copyright (c) 2022 Meta Platforms, Inc. and affiliates.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
